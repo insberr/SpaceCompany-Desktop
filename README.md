@@ -12,7 +12,7 @@ Space Company is a science-fiction incremental game where you start from humble 
 ### How To Install The Game
 As of now, you can run the raw code using `npm start` in the code directory
 
-I have only made a linux build of the game, the installer can be found <a href="">here</a>
+I have only made a linux build of the game, the installer can be found somewhere (soon)
 
 I will make windows and MacOS build soon, dont worry. But if you really need to play it on your platform (what I did at least), 
 Open up the terminal and `cd` into the game code directory.

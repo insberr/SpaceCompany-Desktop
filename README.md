@@ -39,13 +39,13 @@ And some others
 
 ### How To Install The Game
 Open up the code directory in the terminal and type
-
-```npm install```
-
+```
+npm install
+```
 Once that is done, type
-
-```npm start```
-
+```
+npm start
+```
 
 
 I have not made any build of the game (like a .exe) yet. Still learning.
@@ -61,12 +61,16 @@ I will make the build soon, dont worry.
 
 
 
-## Mainly nots for me: 
-* Autosave seconds set title
+## Mainly notes for me:
+<details><summary>Autosave seconds set title</summary>
+<p>
+
 ```js
 // This is what to put before the time left
 document.title = companyName + " Company - Autosaving in " +
 ```
+</p>
+</details>
 
 * Using jquery
 ```html

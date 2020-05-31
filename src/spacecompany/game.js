@@ -1,4 +1,7 @@
-const storage = require('electron-storage')
+const vex = require('vex-js');
+vex.registerPlugin(require('vex-dialog'))
+vex.defaultOptions.className = 'vex-theme-os'
+
 var Game = (function() {
     'use strict';
 
@@ -236,17 +239,25 @@ var Game = (function() {
     };
 
     instance.deleteSave = function() {
-        var deleteSave = prompt("Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.");
+        var deleteSave;
+        vex.dialog.prompt({
+            message: "Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.",
+            placeholder: 'DELETE',
+            callback: function (value) {
+                deleteSave = value;
+                console.log(value)
+                if(deleteSave === "DELETE") {
+                    localStorage.removeItem("save");
+        
+                    vex.dialog.alert("Deleted Save");
+                    window.location.reload();
+                } else {
+                    vex.dialog.alert("Deletion Cancelled");
+                }
+            }
+        });
 
-        if(deleteSave === "DELETE") {
-            localStorage.removeItem("save");
-
-            alert("Deleted Save");
-            window.location.reload();
-        }
-        else {
-            alert("Deletion Cancelled");
-        }
+        
     };
 
     instance.loadDelay = function (self, delta) {
@@ -288,7 +299,7 @@ var Game = (function() {
         // Do this in a setInterval so it gets called even when the window is inactive
         window.setInterval(function(){ Game.fixedUpdate(); },100);
 
-        setTimeout(function(){document.getElementById("loadScreen").className = "hidden";}, 100)
+        setTimeout(function(){document.getElementById("loadScreen").className = "hidden";}, 150)
         console.debug("Load Complete");
 
     };
@@ -399,15 +410,19 @@ var Game = (function() {
             element.show();
             if(timeLeft <= 5000){
                 element.text("Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds");
+                document.title = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds";
             }
             else{
                 element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
+                document.title = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds";
             }
         } else {
             element.hide();
+            document.title = companyName + " Company";
         }
 
         if(timeLeft < 100) {
+            document.title = companyName + " Company";
             this.save();
             this.timeSinceAutoSave = 1;
         }

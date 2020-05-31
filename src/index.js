@@ -1,63 +1,80 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
-
-// Handle creating/removing shortcuts on Windows when installing/uninstalling.
-if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
-    app.quit();
-}
+const fs = require('fs');
 
 const createWindow = () => {
     // Create the browser window.
-    const mainWindow = new BrowserWindow({
+    const win = new BrowserWindow({
         width: 1250,
         height: 700,
-        icon: path.join(__dirname, 'SpaceCompanyFavicon.png'),
+        icon: path.join(__dirname, '/spacecompany/SpaceCompanyFavicon.png'),
         webPreferences: {
             nodeIntegration: true
         }
     });
     const template = [
         {
-            label: 'File',
+            label: 'Window',
             submenu: [
-                {
-                    role: 'reload'
-                },
-                {
-                    role: 'toggleFullscreen'
-                },
-                {
-                    label: 'Save',
-                    click() {
-
-                    }
-                }
+                { role: 'reload' },
+                { role: 'toggledevtools' },
+                { role: 'toggleFullscreen' }
             ]
         },
         {
             label: 'Edit',
             submenu: [
-                {
-                    role: 'undo'
-                },
-                {
-                    role: 'redo'
-                }
+                { role: 'undo' },
+                { role: 'redo' }
             ]
         },
         {
             label: 'Game',
             submenu: [
                 {
+                    label: 'Save',
+                    accelerator: 'CmdOrCtrl+S',
+                    click() {
+                        win.webContents.send('saveTheGame')
+                    }
+                },
+                {
+                    type: 'separator'
+                },
+                {
+                    role: 'about'
+                },
+                {
                     label: 'Home',
                     click() {
-                        mainWindow.webContents.loadFile(path.join(__dirname, 'index.html'))
+                        win.webContents.loadFile(path.join(__dirname, '/spacecompany/index.html'))
                     }
                 },
                 {
                     label: 'SpaceCompany Source',
                     click() {
-                        mainWindow.webContents.loadURL(`https://github.com/sparticle999/spacecompany`)
+                        win.webContents.loadURL(`https://github.com/sparticle999/spacecompany`)
+                    }
+                }
+            ]
+        }, 
+        {
+            label: 'Help',
+            submenu: [
+                { 
+                    label: 'How To Play', 
+                    async click() {
+                        win.webContents.send('saveTheGame')
+                        win.loadFile(path.join(__dirname, '/spacecompany/game/help.html'))
+                        win.webContents.send('helpPage')
+                    } 
+                },
+                { 
+                    label: 'Credits', 
+                    click(){
+                        win.webContents.send('saveTheGame')
+                        win.loadFile(path.join(__dirname, '/spacecompany/game/credits.html'))
+                        win.webContents.send('creditsPage')
                     }
                 }
             ]
@@ -66,10 +83,10 @@ const createWindow = () => {
     const menu = Menu.buildFromTemplate(template)
     Menu.setApplicationMenu(menu)
     // and load the index.html of the app.
-    mainWindow.loadFile(path.join(__dirname, 'index.html'));
+    win.loadFile(path.join(__dirname, '/spacecompany/index.html'));
 
     // Open the DevTools.
-    //mainWindow.webContents.openDevTools();
+    win.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished

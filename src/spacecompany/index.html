@@ -9,6 +9,14 @@
 	<link href="lib/pnotify.custom.min.css" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="game/vex.css" />
+	<link rel="stylesheet" href="game/vex-theme-os.css" />
+	<!-- Save the game when you click the save button from the menu -->
+	<script>
+		require('electron').ipcRenderer.on('saveTheGame', function(event) {
+		  Game.save()
+		});
+	  </script>
 	<!-- <script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script> -->
 	<!-- <script>
 		kongregateAPI.loadAPI(function(){
@@ -7211,6 +7219,6 @@
 <script type="text/javascript" src="solCenter.js"></script>
 
 <!-- RELEASE -->
-<script type="text/javascript" src="SpaceCompany.min.js"></script>
+<!--<script type="text/javascript" src="SpaceCompany.min.js"></script>-->
 
 </html>

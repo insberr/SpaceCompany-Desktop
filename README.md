@@ -8,15 +8,27 @@ Space Company is a science-fiction incremental game where you start from humble 
 The idea of this project is to turn <a href="https://github.com/sparticle999/spacecompany">Space Company</a> into a desktop application while also keeping the same feel as the original game in some way. I will be redesigning the layout to make it have a desktop style/feel
 <br>You should check out this project that is being worked on at the same time as this ---> <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a> made by <a href="https://github.com/migue1s" target="_blank">migue1s</a>
 
+
+## V0.0.5 Updates
+* Added the help and credits pages to the menu bar (under help)
+* Added a load game from save data button in the menu under 'Game'
+* Added 'Home' button to go back to the game from a differant page (till i make new pages into a new window rather than the same window)
+* Started work on making a custom menu bar (as seen in the credits.html page)
+
+### Plans / Things I Need To Do
+* Make the menu bar on the 'webpage' rather than the 'program window' so youn can access it in fullscreen
+* Reword the credits page
+* Redesign the credits and help page
+
+
 ## Updates
 * Made the title bar display the autosave seconds
-* Added a node module that makes the use of 
+* Added a node module that replaces the use of
 ```js
 prompt()
 alert()
 confirm()
 ``` 
-And some others
 * The Delete game save button now works
 * Changed the file structure to be a little more neat
 * Watched hermitcraft while coding :)
@@ -39,13 +51,13 @@ And some others
 
 ### How To Install The Game
 Open up the code directory in the terminal and type
-
-```npm install```
-
+```
+npm install
+```
 Once that is done, type
-
-```npm start```
-
+```
+npm start
+```
 
 
 I have not made any build of the game (like a .exe) yet. Still learning.
@@ -59,9 +71,8 @@ I will make the build soon, dont worry.
 * Electron js - Electron I think
 
 
-Work
 
-## Mainly nots for me: 
+## Mainly notes for me: 
 * Autosave seconds set title
 ```js
 // This is what to put before the time left

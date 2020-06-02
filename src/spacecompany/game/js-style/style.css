@@ -4,3 +4,77 @@ body {
     color: white;
     size: 15px;
 }
+*:focus {
+    outline: none;
+}
+::-webkit-scrollbar {
+    display: none;
+}
+
+.bar-icon {
+    position: absolute;
+    left: 4px;
+    top: 4px;
+    height: 20px;
+}
+
+#Window-Menu {
+    display: none;
+}
+
+.group {
+    position: absolute;
+    top: 0;
+    left: 30px;
+}
+.menu-tab-button {
+    background-color: transparent;
+    display: inline;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    padding-bottom: 6px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-app-region: none;
+}
+
+.menu-tab-button:hover {
+    background-color: gray;
+}
+
+.custom-bar {
+    background-color: rgb(136, 136, 136);
+    -webkit-app-region: drag;
+    position: sticky;
+    border-radius: 3px;
+    user-select: none;
+    padding: 5.5px 0;
+    text-align: center;
+}
+
+.bar-button {
+    background-color: transparent;
+    display: inline;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    padding-bottom: 6px;
+    text-align: center;
+    text-decoration: none;
+    -webkit-app-region: none;
+}
+
+.bar-button-group {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.bar-button:hover {
+    background-color: red;
+}
+
+#close-btn {
+    -webkit-app-region: none;
+}

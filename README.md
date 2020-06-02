@@ -72,12 +72,17 @@ I will make the build soon, dont worry.
 
 
 
-## Mainly notes for me: 
-* Autosave seconds set title
+
+## Mainly notes for me:
+<details><summary>Autosave seconds set title</summary>
+<p>
+
 ```js
 // This is what to put before the time left
 document.title = companyName + " Company - Autosaving in " +
 ```
+</p>
+</details>
 
 * Using jquery
 ```html

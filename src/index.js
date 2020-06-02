@@ -1,31 +1,40 @@
 const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
-const fs = require('fs');
 
+
+// The function to create the window.
 const createWindow = () => {
     // Create the browser window.
     const win = new BrowserWindow({
         width: 1250,
         height: 700,
         icon: path.join(__dirname, '/spacecompany/SpaceCompanyFavicon.png'),
+        show: false,
+        backgroundColor: '#222222',
+        frameColor: '#222222',
         webPreferences: {
             nodeIntegration: true
         }
     });
+
+    win.once('ready-to-show', () => {
+        win.show()
+    })
+    
     const template = [
+        {
+            label: 'Home',
+            click() {
+                win.webContents.loadFile(path.join(__dirname, '/spacecompany/index.html'))
+            }
+        },
         {
             label: 'Window',
             submenu: [
                 { role: 'reload' },
                 { role: 'toggledevtools' },
-                { role: 'toggleFullscreen' }
-            ]
-        },
-        {
-            label: 'Edit',
-            submenu: [
-                { role: 'undo' },
-                { role: 'redo' }
+                { role: 'toggleFullscreen' },
+                { role: 'quit' }
             ]
         },
         {
@@ -39,10 +48,21 @@ const createWindow = () => {
                     }
                 },
                 {
-                    type: 'separator'
+                    label: 'Settings',
+                    click() {
+                        const settingsWindow = new BrowserWindow({ parent: win })
+                        settingsWindow.setMenuBarVisibility(false)
+                        settingsWindow.loadFile(path.join(__dirname, '/spacecompany/game/settings.html'))
+                    }
                 },
                 {
-                    role: 'about'
+                    label: 'Load From Data',
+                    click() {
+                        win.webContents.send('loadFromData')
+                    }
+                },
+                {
+                    type: 'separator'
                 },
                 {
                     label: 'Home',
@@ -65,28 +85,43 @@ const createWindow = () => {
                     label: 'How To Play', 
                     async click() {
                         win.webContents.send('saveTheGame')
-                        win.loadFile(path.join(__dirname, '/spacecompany/game/help.html'))
-                        win.webContents.send('helpPage')
+                        const helpWindow = new BrowserWindow({ parent: win })
+                        helpWindow.setMenuBarVisibility(false)
+                        helpWindow.loadFile(path.join(__dirname, '/spacecompany/game/help.html'))
                     } 
                 },
                 { 
                     label: 'Credits', 
-                    click(){
+                    click(){   
                         win.webContents.send('saveTheGame')
-                        win.loadFile(path.join(__dirname, '/spacecompany/game/credits.html'))
-                        win.webContents.send('creditsPage')
+                        const creditsWindow = new BrowserWindow({ 
+                            frame: false,
+                            parent: win,
+                            width: 1250,
+                            height: 700,
+                            icon: path.join(__dirname, '/spacecompany/SpaceCompanyFavicon.png'),
+                            backgroundColor: '#222222',
+                            webPreferences: {
+                                nodeIntegration: true,
+                                enableRemoteModule: true
+                            }
+                        })
+                        // creditsWindow.setMenuBarVisibility(false)
+                        creditsWindow.loadFile(path.join(__dirname, '/spacecompany/game/credits.html'))
                     }
                 }
             ]
         }
     ]
+    
     const menu = Menu.buildFromTemplate(template)
     Menu.setApplicationMenu(menu)
+
     // and load the index.html of the app.
     win.loadFile(path.join(__dirname, '/spacecompany/index.html'));
 
     // Open the DevTools.
-    win.webContents.openDevTools();
+    // win.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -113,3 +148,7 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+app.on('creditsWindowClose', function(event) {
+    creditsWindow.quit()
+});

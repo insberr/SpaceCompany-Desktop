@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div role="tabpanel" class="tab-pane fade" id="more">
+			<div class="container" style="width:250px; float:left">
+				<table class="table table-hover text-primary no-select pointer">
+					<tr href="#savingTab" aria-controls="savingTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab">
+						<td style="border:none; vertical-align:middle;">
+							<span>
+								Saving
+							</span>
+						</td>
+					</tr>
+					<tr href="#uiTab" aria-controls="uiTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab">
+						<td style="vertical-align:middle;">
+							<span>
+								Graphics Options
+							</span>
+						</td>
+					</tr>
+					<tr href="#statsTab" aria-controls="statsTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Stats
+							</span>
+						</td>
+					</tr>
+					<tr href="#achievementsTab" aria-controls="achievementsTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab" onclick="tabClicked('achievements')">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Achievements
+							</span>
+							<span id="achievementsTabGlyph" class="pull-right glyphicon glyphicon-exclamation-sign hidden"></span>
+						</td>
+					</tr>
+					<tr href="#donatingTab" aria-controls="donatingTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Donating
+							</span>
+						</td>
+					</tr>
+					<tr href="#linksTab" aria-controls="linksTab" role="tab" data-toggle="tab" style="height:60px;" class="sideTab">
+						<td colspan="2" style="vertical-align:middle;">
+							<span>
+								Links
+							</span>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div class="tab-content">
+				<div id="savingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Saving
+									</h2>
+									<span>
+										This is where you can change how your game is saved.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Auto-Save Duration
+									</h3>
+									<span>
+										Change how long the game waits before auto-saving again.
+									</span>
+									<br>
+									<div class="btn-group" data-toggle="buttons">
+										<label class="btn btn-default active">
+											<input type="radio" name="autosaves" id="30secs" autocomplete="off" checked> 30 Seconds
+										</label>
+										<label class="btn btn-default">
+											<input type="radio" name="autosaves" id="2mins" autocomplete="off"> 2 Minutes
+										</label>
+										<label class="btn btn-default">
+											<input type="radio" name="autosaves" id="10mins" autocomplete="off"> 10 Minutes
+										</label>
+										<label class="btn btn-default">
+											<input type="radio" name="autosaves" id="off" autocomplete="off"> Off
+										</label>
+									</div>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Manual Saving
+									</h3>
+									<button id="saveButton" onclick="Game.save()" class="btn btn-primary" style="margin-top:5px; height:80%; vertical-align: middle">
+										<span style="color:white;">
+											Save
+										</span>
+									</button>
+									<button id="loadButton" onclick="Game.load()" class="btn btn-primary" style="margin-top:5px; margin-left:2px; height:80%; vertical-align: middle;">
+										<span style="color:white;">
+											Load
+										</span>
+									</button>
+									<br>
+									<button onclick="Game.deleteSave()" class="btn btn-danger" style="margin-top:5px; height:80%; display:inline-block; vertical-align: middle">
+										<span style="color:white;">
+											Hard Reset
+										</span>
+									</button>
+									<span>
+										Warning: This is non-reversible! Be cautious. There is a confirmation to delete your save.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Import/Export
+									</h3>
+									<button class="btn btn-primary" onclick="Game.export()">Export Save</button>
+									<button class="btn btn-primary" onclick="Game.import()">Import Save</button>
+									<button class="btn btn-primary" id="copyExport">Copy Text Below To Clipboard</button>
+									<br>
+									<textarea id="impexpField" style="margin-top:20px; width:300px; height:100px;"></textarea>
+									<br>
+									<span>
+										Copy and paste this onto a file somewhere so that you can import it into the game at a later date.
+										<br>
+										You can also use this to create multiple 'savefiles' of the game by storing multiple instances separately.
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="uiTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Graphics Options
+									</h2>
+									<span>
+										You can enable settings to change the interface here.
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Themes
+									</h3>
+				                	<select id="themeSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
+				                		<option value="base">Base</option>
+				                		<option value="cerulean">Cerulean</option>
+				                		<option value="cyborg">Cyborg</option>
+				                		<option value="cyborg2">Cyborg V2</option>
+				                		<option value="darkly">Darkly</option>
+				                		<option value="flatly">Flatly</option>
+				                		<option value="paper">Paper</option>
+				                		<option value="readable">Readable</option>
+				                		<option value="simplex">Simplex</option>
+				                		<option value="solar">Solar</option>
+				                		<option value="spacelab">Spacelab</option>
+				                		<option value="united">United</option>
+				                	</select>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Notation
+									</h3>
+									<select id="formatSelector" ng-model="player.current_theme" class="ng-valid ng-touched ng-dirty ng-valid-parse">
+										<option value="raw">Raw</option>
+										<option value="rounded">Rounded</option>
+										<option value="name">Name</option>
+										<option value="shortName" selected>Short Name</option>
+										<option value="shortName2">Short Name (2)</option>
+										<option value="scientific">Scientific (*10^n)</option>
+										<option value="scientific2">Scientific (E+n)</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Change Company Name
+									</h3>
+				                	<div class="checkbox">
+										<input type="text" name="companyName"> Company <input type="submit" value="Submit">
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Text Decoration
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="boldEnabled" type="checkbox" value="">Red Costs: Bold</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Autosave Notifications
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="saveNotifsEnabled" type="checkbox" value="">Autosave Notifications</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Notifications (Not Autosave)
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="notificationsEnabled" type="checkbox" value="">Screen Notifications</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Sidebar Height Compression (Not fully implemented)
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="sidebarCompressed" type="checkbox" value="">Compress Rows in Sidebar to Decrease White Space</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Gain Buttons
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="gainButtonsHidden" type="checkbox" value="">Gain Buttons Hidden</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Coloured Destroy Buttons
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="redDestroyButtons" type="checkbox" value="">Destroy Buttons Red</label>
+									</div>
+				                </td>
+							</tr>
+							<tr>
+								<td>
+									<h3 class="default btn-link">
+										Hide Completed Tabs
+									</h3>
+				                	<div class="checkbox">
+										<label><input id="hideCompleted" type="checkbox" value="">Hidden</label>
+									</div>
+				                </td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="statsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Stats
+									</h2>
+									<span>
+										This is where you can see your progress in a table with each aspect laid out for you to see.
+										<br>
+										Warning: your stats will not have been added if they were implemented after you achieved them.
+										<br>
+										<b>NB: Stats are really buggy at the moment. They are often not accurate and this is because of layers of updates changing them while you guys progressed through the game. They will be fixed on your first prestige by starting over. After the first prestige, you will keep a total stat and a 'this run' stat.</b>
+									</span>
+								</td>
+							</tr>
+							<tr>
+								<td id="statisticContent"></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="achievementsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Achievements
+									</h2>
+									<span>
+										This is where you can see your rank and all of your achievements.<br>XP = Star position: [1,2,3,4,5]
+									</span>
+								</td>
+								<td id="rankContent" style="border:none;"></td>
+							</tr>
+							<tr colspan="2" id="rankBarContent"></tr>
+							<tr id="achievementContent"></tr>
+						</table>
+					</div>
+				</div>
+				<div id="donatingTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Donating
+									</h2>
+									<span>
+										I didn't like the intrusiveness of ads on this game and felt that getting people to pay for an in-game boost wouldn't bode well in the community as it makes the game feel like a freemium or pay-to-win game.
+										<br>
+										However, I like the donation system because there is nothing forcing you to donate other than out of the goodness of people's hearts. If you like the game and want more content faster, I would be happy to put more time towards this game if I felt that it is paying off.
+										<br>
+										I have a <a href="https://www.paypal.me/Sparticle999" target="_blank" class="btn-link" style="font-size:16px;">PayPal Link</a> if you want to help out and speed the game's progress along.
+										<br>
+										And a <a href="https://www.patreon.com/sparticle999" target="_blank" class="btn-link" style="font-size:16px;">Patreon Page</a>, if you want to have continued support for Space Company development, and for an impact on the game yourself.
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				<div id="linksTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+					<div class="container" style="max-width:800px;">
+						<table class="table">
+							<tr>
+								<td style="border:none;">
+									<h2 class="default btn-link">
+										Links
+									</h2>
+									<span style="font-size:18px">
+										These are links to everything Space Company outside of the game itself.
+										<br>
+										<br>
+										<a href="http://reddit.com/r/spacecompany">Sub-Reddit</a>
+										<br>
+										<a href="http://www.kongregate.com">Kongregate: </a><a href="http://www.kongregate.com/games/sparticle999/space-company">Game</a>
+										<br>
+										<a href="http://github.com">GitHub: </a><a href="https://github.com/sparticle999/SpaceCompany/">Source Code</a>
+										<br>
+										<a href="https://plaza.dsolver.ca/">The Plaza: </a><a href="https://plaza.dsolver.ca/games/space-company">Game</a>
+										<br>
+										<a href="https://github.com/sparticle999/SpaceCompany#changelog">Changelog</a> / <a href="https://www.reddit.com/r/SpaceCompany/wiki/futureplans">Future Plans</a>
+										<br>
+										<a href="https://www.reddit.com/r/SpaceCompany/wiki/index">Wiki</a>
+										<br>
+										<a href="https://www.discord.gg/277CMCx">Discord</a>
+									</span>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+    </body>
+</html>

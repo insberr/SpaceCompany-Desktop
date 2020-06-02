@@ -18,7 +18,7 @@ Game.settings = (function(){
             gainButtonsHidden: false,
             redDestroyButtons: false,
             hideCompleted: false,
-            theme: 'base',
+            theme: 'darkly',
             autoSaveInterval: 30 * 1000
         },
         elementCache: {},

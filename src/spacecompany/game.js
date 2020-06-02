@@ -442,6 +442,32 @@ var Game = (function() {
         this.update_frame(0);
     };
 
+    instance.loadFromData = function() {
+        vex.dialog.prompt({
+            message: "Paste your save data",
+            placeholder: 'Data Goes Here',
+            callback: function (value) {
+                var text = value;
+                if (!text.trim()) return console.warn("No save to import provided.");
+                if(text.length % 4 !== 0) {
+                    console.log("String is not valid base64 encoded: " + text.length + ' (' + text.length % 4 + ')');
+                    return;
+                }
+
+                var decompressed = LZString.decompressFromBase64(text);
+                if(!decompressed) {
+                    console.log("Import Game failed, could not decompress!");
+                    return;
+                }
+                localStorage.setItem("save", decompressed);
+
+                console.log("Imported Saved Game");
+
+                window.location.reload();
+            }
+        })
+    };
+
     return instance;
 }());
 

@@ -5,7 +5,71 @@
         <link rel="stylesheet" href="js-style/style.css" type="text/css" />
     </head>
     <body>
-        <p>Nothing to see her yet</p>
+        <div>
+            <input type="button" id="close" value="Close app"/>
+            <input type="button" id="devtools" value="Open DEV Tools"/>
+            <div class="draggable-area">
+                Drag the window here
+            </div>
+        </div>
+    </div>
+    
+        <div class="custom-bar">
+            <div style="-webkit-app-region: drag">Title</div>
+            <div id="min-btn">Button-Minimize</div>
+            <div id="max-btn">Button-Maximize</div>
+            <div id="close-btn">Button-Close</div>
+        </div>
+        <div id="creditsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
+            <div class="container" style="max-width:800px;">
+                <table class="table">
+                    <tr>
+                        <td style="border:none;">
+                            <h2 class="default btn-link">
+                                About
+                            </h2>
+                            <span>
+                                This game is made by me, Sparticle999, as a project to improve my skills at making games and to see what I could add to the incremental gaming world.
+                                <br>
+                                The content in this game is not always accurate. This is because if it were accurate, many of the elements on other planets would be the same as Earth's, such as metal on Mars (iron oxide). Thus, I have had to make up some facts to help my game stay diverse. I apologise for any infuriation caused.
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="border:none;">
+                            <h3 class="default btn-link">
+                                Tools Used
+                            </h3>
+                            <span>
+                                <a class="pointer btn-link" target="_blank" href="http://getbootstrap.com/">Bootstrap</a> was central to the base design of the game, and until I decide to create an interface for myself, either when I feel that it is necessary, or when people ask me to change it, this will be the general look for a while.
+                                <br>
+                                <br>
+                                <a class="pointer btn-link" target="_blank" href="http://bootswatch.com/">Bootswatch</a> is the tool that I used to add the different themes to the game. If anyone wants more themes from this website, I would be happy to add them in.
+                                <br>
+                                <br>
+                                Most of the images are from <a class="pointer btn-link" target="_blank" href="https://www.shutterstock.com/">Shutterstock</a> and retextured and edited by myself to fit the theme of this game.
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <h3 class="default btn-link">
+                                Thank you to all Donators and my supporters on Patreon!
+                            </h3>
+                            <h4>Patreon:</h4>
+                            <ul>
+                                <li>Tom Paine</li>
+                            </ul>
+                            <h4>Paypal Donators:</h4>
+                            <ul>
+                                <li>Steve Chahine</li>
+                                <li></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
     </body>
     <script src="js-style/style.js"></script>
 </html>

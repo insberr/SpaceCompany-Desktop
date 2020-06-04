@@ -16,17 +16,8 @@ document.getElementById("Window").addEventListener('click', () => {
 })
 
 
-document.getElementById("bar-title").innerHTML = 'hi';
+document.getElementById("bar-title").innerHTML = document.title;
 
 document.getElementById("close-btn").addEventListener("click", () => {
     app.BrowserWindow.getFocusedWindow().close();
-}, false);
-
-// Close app 
-document.getElementById("max-btn").addEventListener("click", () => {
-    app.BrowserWindow.getFocusedWindow().maximize();
-}, false);
-
-document.getElementById("min-btn").addEventListener("click", () => {
-    app.BrowserWindow.getFocusedWindow().minimize();
 }, false);

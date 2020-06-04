@@ -20,6 +20,9 @@ body {
 
 #Window-Menu {
     display: none;
+    border: 1px solid black;
+    padding: 5px 5px;
+    background-color: gold;
 }
 
 .group {
@@ -51,6 +54,7 @@ body {
     user-select: none;
     padding: 5.5px 0;
     text-align: center;
+    margin: 0;
 }
 
 .bar-button {

@@ -66,7 +66,7 @@ I will make the build soon, dont worry.
 
 ## Links 
 * <a href="https://github.com/spidergamin" target="_blank">SpiderGamin</a> - Me? Yeah I think so.
-* <a href="https://github.com/migue1s" target="_blank">Sparticle999</a> - Game creator
+* <a href="https://github.com/sparticle999" target="_blank">Sparticle999</a> - Game creator
 * <a href="https://github.com/migue1s" target="_blank">migue1s</a> - Mobile app maker
 * Electron js - Electron I think
 
@@ -84,25 +84,41 @@ document.title = companyName + " Company - Autosaving in " +
 </p>
 </details>
 
-* Using jquery
+
+<details><summary>Using jquery</summary>
+<p>
+
 ```html
 <!-- this goes in the index.html file, at the bottom with all the script tags -->
 <script>window.$ = window.jQuery = require('jquery');</script>
 ```
+</p>
+</details>
 
-* vex-js js prompt replacement. This goes in the head tag
+<details><summary>vex-js js prompt replacement</summary>
+<p>
+
+This goes in the head tag
+
 ```html
 <link rel="stylesheet" href="game/vex.css" />
 <link rel="stylesheet" href="game/vex-theme-os.css" />
 ```
+
 This goes in any js file that uses the `prompt()` function
+
 ```js
 const vex = require('vex-js');
 vex.registerPlugin(require('vex-dialog'))
 vex.defaultOptions.className = 'vex-theme-os'
 ```
 
-* Game save delete
+</p>
+</details>
+
+<details><summary>Game save delete</summary>
+<p>
+
 ```js
 instance.deleteSave = function() {
     var deleteSave;
@@ -124,3 +140,6 @@ instance.deleteSave = function() {
     });
 };
 ```
+
+</p>
+</details>

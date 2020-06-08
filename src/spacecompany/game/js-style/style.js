@@ -1,7 +1,7 @@
 // No Content Yet Cause Its BedTime
 var app = require('electron').remote;
 
-// Close app 
+/* Close app 
 var cloased;
 cloased = true;
 document.getElementById("Window").addEventListener('click', () => {
@@ -15,9 +15,14 @@ document.getElementById("Window").addEventListener('click', () => {
     
 })
 
+*/
 
-document.getElementById("bar-title").innerHTML = document.title;
+document.getElementsByClassName("menu-title")[0].innerHTML = document.title;
 
-document.getElementById("close-btn").addEventListener("click", () => {
+var titlePosition = 50 - (document.title.length / 2) + '%';
+console.log(titlePosition);
+document.getElementsByClassName("menu-title")[0].style.left = titlePosition;
+
+document.getElementsByClassName("menu-close")[0].addEventListener("click", () => {
     app.BrowserWindow.getFocusedWindow().close();
 }, false);

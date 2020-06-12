@@ -504,6 +504,7 @@ var Game = (function () {
             }
             case ('back'): {
                 document.getElementById('settingsPage').className = 'hidden';
+                document.getElementById('statsPage').className = 'hidden';
                 document.getElementById('helpPage').className = 'hidden';
                 document.getElementById('creditsPage').className = 'hidden';
                 return;
@@ -539,16 +540,4 @@ var Game = (function () {
 
 window.onload = function () {
     Game.start();
-};
-
-
-/* Keyboard shortcuts */
-document.onkeyup = function (e) {
-    if (e.ctrlKey && e.which == 83) {
-        Game.save();
-    } else if (e.which == 27) {
-        Game.mainMenu('main');
-    } else if (e.ctrlKey && e.which == 67) {
-        PNotify.removeAll();
-    }
 };

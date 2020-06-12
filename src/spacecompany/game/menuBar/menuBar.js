@@ -1,6 +1,3 @@
-
-/* === Menu Tabs === */
-
 // Window Tab
 var windowTab;
 windowTab = true;

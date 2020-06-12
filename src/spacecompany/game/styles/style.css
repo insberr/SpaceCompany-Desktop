@@ -25,7 +25,8 @@
 
 .show {
     overflow: visible;
-    background-color: #222222;
+    background-color: inherit;
+    color: inherit;
 }
 
 .back {

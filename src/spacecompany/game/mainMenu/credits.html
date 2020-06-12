@@ -3,38 +3,57 @@
 
 <head>
     <title>Credits - SpaceCompany</title>
-    <link rel="stylesheet" href="js-style/style.css" type="text/css" />
+    <link rel="stylesheet" href="../menuBar/menuBar.css" type="text/css" />
+    <link rel="stylesheet" href="../styles/style.css" type="text/css" />
 </head>
 
-<body>
+<body class="body">
     <div class="menu-bar"></div>
-    <img class="menu-icon" src="../SpaceCompanyFavicon.png">
-    <span class="menu-title">Credits - SpaceCompany |</span>
+    <img class="menu-icon" src="../../whiteLogo.png">
+    <h1 class="menu-title">Credits - SpaceCompany |</h1>
     <div class="menu-tabs">
-        <button class="menu-tab">Window</button>
-        <button class="menu-tab">Game</button>
-        <button class="menu-tab">More</button>
+        <button class="menu-tab window-tab">Window</button>
+        <button class="menu-tab game-tab">Game</button>
+        <button class="menu-tab more-tab">More</button>
     </div>
-    <button class="menu-close"><img width="12px" src="../Icons/close.png"></button>
-    <!--
-    <div class="custom-bar-outer">
-        <div class="custom-bar">
-            <img class="bar-icon" src="../SpaceCompanyFavicon.png">
-            <span class="group">
-                <button id="Window" class="menu-tab-button dropbtn">Window</button>
-                <button class="menu-tab-button">Game</button>
-                <button class="menu-tab-button">More</button>
-            </span>
-            <span id="bar-title">Page Title</span>
-            <span class="bar-button-group">
-                <button class="bar-button" id="close-btn"><img width="12px" src="../Icons/close.png"></button>
-            </span>
-        </div>
-    </div>
-    <div>
-        <span id="Window-Menu">Hi</span>
-    </div>
-    -->
+    <button class="menu-close"><img width="12px" src="../../Icons/close.png"></button>
+    <table class="tab-dropdown tab-win">
+        <tr>
+            <td><button class="tab-item fullscreen">Toggle Fullscreen</button>
+        <tr>
+            <td><button class="tab-item reload">Reload CTRL+R</button>
+        <tr>
+            <td>
+                <tab-line>
+        <tr>
+            <td><button class="tab-item devTools">Open Dev Tools CTRL+Shift+I</button>
+        <tr>
+            <td>
+                <tab-line>
+        <tr>
+            <td><button class="tab-item quit">Quit CTRL+Q</button>
+    </table>
+    <table class="tab-dropdown tab-game">
+        <tr>
+            <td><button class="tab-item mainMenu">Main Menu</button>
+        <tr>
+            <td><button class="tab-item save">Save</button>
+        <tr>
+            <td><button class="tab-item deleteSaveData">Delete Save Data</button>
+        <tr>
+            <td><button class="tab-item loadFromData">Load Save Data</button>
+        <tr>
+            <td>
+                <tab-line></tab-line>
+        <tr>
+            <td><button class="tab-item settings">Settings</button>
+    </table>
+    <table class="tab-dropdown tab-more">
+        <tr>
+            <td><button class="tab-item helpPage">Help & FAQ</button>
+        <tr>
+            <td><button class="tab-item creditsPage">Credits</button>
+    </table>
     <div class="page-content">
         <div id="creditsTab" class="tab-pane fade in" style="margin-left:10px; float:left;">
             <div class="container" style="max-width:800px;">
@@ -104,6 +123,9 @@
         </div>
     </div>
 </body>
-<script src="js-style/style.js"></script>
+
+<script>window.$ = window.jQuery = require('jquery');</script>
+<script src="../menuBar/menuBar.js"></script>
+<script src="../styles/style.js"></script>
 
 </html>

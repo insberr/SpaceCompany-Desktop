@@ -1,8 +1,16 @@
+var app = require('electron').remote;
+const electron = require('electron')
+const path = require('path')
+const BrowserWindow = electron.remote.BrowserWindow
 const vex = require('vex-js');
 vex.registerPlugin(require('vex-dialog'))
 vex.defaultOptions.className = 'vex-theme-os'
 
-var Game = (function() {
+var fullscreen;
+fullscreen = false;
+
+
+var Game = (function () {
     'use strict';
 
     var instance = {
@@ -16,7 +24,7 @@ var Game = (function() {
         lastFixedUpdate: new Date().getTime()
     };
 
-    instance.update_frame = function(time) {
+    instance.update_frame = function (time) {
         Game.update(time - Game.lastUpdateTime);
         Game.lastUpdateTime = time;
 
@@ -24,7 +32,7 @@ var Game = (function() {
         window.requestAnimationFrame(Game.update_frame);
     };
 
-    instance.update = function(delta) {
+    instance.update = function (delta) {
         for (var name in this.intervals) {
             var data = this.intervals[name];
             data.e += delta;
@@ -35,15 +43,15 @@ var Game = (function() {
         }
     };
 
-    instance.createInterval = function(name, callback, delay) {
-        this.intervals[name] = {c: callback, d: delay, e: 0}
+    instance.createInterval = function (name, callback, delay) {
+        this.intervals[name] = { c: callback, d: delay, e: 0 }
     };
 
-    instance.deleteInterval = function(name) {
+    instance.deleteInterval = function (name) {
         delete this.intervals[name];
     };
 
-    instance.fixedUpdate = function() {
+    instance.fixedUpdate = function () {
         var currentTime = new Date().getTime();
         var delta = (currentTime - this.lastFixedUpdate) / 1000;
         this.lastFixedUpdate = currentTime;
@@ -53,7 +61,7 @@ var Game = (function() {
         fixStorageRounding();
     };
 
-    instance.fastUpdate = function(self, delta) {
+    instance.fastUpdate = function (self, delta) {
         refreshWonderBars();
         checkRedCost();
 
@@ -73,12 +81,12 @@ var Game = (function() {
 
         self.updateAutoSave(delta);
 
-        if(delta > 1) {
+        if (delta > 1) {
             console.log("You have been away for " + Game.utils.getTimeDisplay(delta));
         }
     };
 
-    instance.slowUpdate = function(self, delta) {
+    instance.slowUpdate = function (self, delta) {
         refreshConversionDisplay();
         refreshTimeUntilLimit();
         gainAutoEmc();
@@ -91,27 +99,27 @@ var Game = (function() {
         self.statistics.update(delta);
     };
 
-    instance.uiUpdate = function(self, delta) {
-        for(var i = 0; i < self.uiComponents.length; i++) {
+    instance.uiUpdate = function (self, delta) {
+        for (var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].update(delta);
         }
     };
 
-    instance.updateTime = function(delta) {
+    instance.updateTime = function (delta) {
         Game.statistics.add('sessionTime', delta);
         Game.statistics.add('timePlayed', delta);
     };
 
-    instance.import = function() {
+    instance.import = function () {
         var text = $('#impexpField').val();
         if (!text.trim()) return console.warn("No save to import provided.");
-        if(text.length % 4 !== 0) {
+        if (text.length % 4 !== 0) {
             console.log("String is not valid base64 encoded: " + text.length + ' (' + text.length % 4 + ')');
             return;
         }
 
         var decompressed = LZString.decompressFromBase64(text);
-        if(!decompressed) {
+        if (!decompressed) {
             console.log("Import Game failed, could not decompress!");
             return;
         }
@@ -129,7 +137,7 @@ var Game = (function() {
         window.location.reload();
     };
 
-    instance.export = function() {
+    instance.export = function () {
         var data = this.save();
 
         var string = JSON.stringify(data);
@@ -140,7 +148,7 @@ var Game = (function() {
         $('#impexpField').val(compressed);
     };
 
-    instance.save = function() {
+    instance.save = function () {
         var data = {
             lastFixedUpdate: this.lastFixedUpdate
         };
@@ -162,14 +170,14 @@ var Game = (function() {
                 console.error(err)
             }
         });*/
-        localStorage.setItem("save",JSON.stringify(data));
+        localStorage.setItem("save", JSON.stringify(data));
         Game.notifyInfo('Game Saved', 'Your save data has been stored in localStorage on your computer');
         console.log('Game Saved');
 
         return data;
     };
 
-    instance.load = function() {
+    instance.load = function () {
         /*var data;
         storage.get("spacecompany.json", (err, savedata) => {
             if (err) {
@@ -183,21 +191,21 @@ var Game = (function() {
 
         var data = JSON.parse(localStorage.getItem("save"));
 
-        if(data && data !== null) {
+        if (data && data !== null) {
             this.achievements.load(data);
             this.statistics.load(data);
             this.resources.load(data);
             this.buildings.load(data);
             this.stargaze.load(data);
             this.tech.load(data);
-            this.interstellar.load(data); 
+            this.interstellar.load(data);
             this.updates.load(data);
 
             legacyLoad(data);
 
             this.settings.load(data);
 
-            if(data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
+            if (data != null && data.lastFixedUpdate && !isNaN(data.lastFixedUpdate)) {
                 this.handleOfflineGains((new Date().getTime() - data.lastFixedUpdate) / 1000);
             }
         }
@@ -205,7 +213,7 @@ var Game = (function() {
         console.log("Load Successful");
     };
 
-    instance.updateUI = function(self){
+    instance.updateUI = function (self) {
         Game.settings.updateCompanyName();
         refreshResources();
         refreshResearches();
@@ -217,7 +225,7 @@ var Game = (function() {
         updateLabCost();
         updateWonderCost();
 
-        if(Game.constants.enableMachineTab === true){
+        if (Game.constants.enableMachineTab === true) {
             $('#machineTopTab').show();
         }
 
@@ -226,8 +234,8 @@ var Game = (function() {
         self.interstellar.redundantChecking();
     }
 
-    instance.handleOfflineGains = function(offlineTime) {
-        if(offlineTime <= 0) {
+    instance.handleOfflineGains = function (offlineTime) {
+        if (offlineTime <= 0) {
             return;
         }
 
@@ -238,7 +246,7 @@ var Game = (function() {
         this.notifyOffline(offlineTime);
     };
 
-    instance.deleteSave = function() {
+    instance.deleteSave = function () {
         var deleteSave;
         vex.dialog.prompt({
             message: "Are you sure you want to delete this save? It is irreversible! If so, type 'DELETE' into the box.",
@@ -246,9 +254,9 @@ var Game = (function() {
             callback: function (value) {
                 deleteSave = value;
                 console.log(value)
-                if(deleteSave === "DELETE") {
+                if (deleteSave === "DELETE") {
                     localStorage.removeItem("save");
-        
+
                     vex.dialog.alert("Deleted Save");
                     window.location.reload();
                 } else {
@@ -257,11 +265,11 @@ var Game = (function() {
             }
         });
 
-        
+
     };
 
     instance.loadDelay = function (self, delta) {
-        document.getElementById("game").className = "container";
+        // document.getElementById("game").className = "container bar-seperate";
 
         self.deleteInterval("Loading");
 
@@ -282,7 +290,7 @@ var Game = (function() {
 
         self.settings.initialise();
 
-        for(var i = 0; i < self.uiComponents.length; i++) {
+        for (var i = 0; i < self.uiComponents.length; i++) {
             self.uiComponents[i].initialise();
         }
 
@@ -297,36 +305,36 @@ var Game = (function() {
         self.createInterval("UI Update", self.uiUpdate, 100);
 
         // Do this in a setInterval so it gets called even when the window is inactive
-        window.setInterval(function(){ Game.fixedUpdate(); },100);
+        window.setInterval(function () { Game.fixedUpdate(); }, 100);
 
-        setTimeout(function(){document.getElementById("loadScreen").className = "hidden";}, 150)
+        setTimeout(function () { document.getElementById("loadScreen").className = "hidden"; document.getElementById('mainPage').className = "page-content" }, 150)
         console.debug("Load Complete");
 
     };
 
-    instance.loadAnimation = function(self, delta) {
+    instance.loadAnimation = function (self, delta) {
         if (self.logoAnimating === false) {
             return;
         }
 
         var logoElement = $('#loadLogo');
         var opacity = logoElement.css('opacity');
-        if(opacity >= 0.9) {
-            logoElement.fadeTo(1000, .95, function() { Game.logoAnimating = false; });
+        if (opacity >= 0.9) {
+            logoElement.fadeTo(1000, .95, function () { Game.logoAnimating = false; });
             self.logoAnimating = true;
         } else if (opacity <= 0.3) {
-            logoElement.fadeTo(1000, .95, function() { Game.logoAnimating = false; });
+            logoElement.fadeTo(1000, .95, function () { Game.logoAnimating = false; });
             self.logoAnimating = true;
         }
     };
 
-    instance.noticeStack = {"dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25};
+    instance.noticeStack = { "dir1": "up", "dir2": "left", "firstpos1": 25, "firstpos2": 25 };
 
-    instance.notifyInfo = function(title, message) {
-        if(title == "Game Saved" && Game.settings.entries.saveNotifsEnabled == false){
+    instance.notifyInfo = function (title, message) {
+        if (title == "Game Saved" && Game.settings.entries.saveNotifsEnabled == false) {
             return;
         }
-        if(Game.settings.entries.notificationsEnabled === true){
+        if (Game.settings.entries.notificationsEnabled === true) {
             this.activeNotifications.info = new PNotify({
                 title: title,
                 text: message,
@@ -339,8 +347,8 @@ var Game = (function() {
         }
     };
 
-    instance.notifySuccess = function(title, message) {
-        if(Game.settings.entries.notificationsEnabled === true){
+    instance.notifySuccess = function (title, message) {
+        if (Game.settings.entries.notificationsEnabled === true) {
             this.activeNotifications.success = new PNotify({
                 title: title,
                 text: message,
@@ -353,8 +361,8 @@ var Game = (function() {
         }
     };
 
-    instance.notifyStorage = function() {
-        if(Game.settings.entries.notificationsEnabled === true){
+    instance.notifyStorage = function () {
+        if (Game.settings.entries.notificationsEnabled === true) {
             this.activeNotifications.storage = new PNotify({
                 title: "Storage Full!",
                 text: 'You will no longer collect resources when they are full.',
@@ -365,14 +373,14 @@ var Game = (function() {
                 stack: this.noticeStack
             });
 
-            this.activeNotifications.storage.get().click(function() {
+            this.activeNotifications.storage.get().click(function () {
                 Game.activeNotifications.storage.remove();
                 Game.activeNotifications.storage = undefined;
             });
         }
     };
 
-    instance.notifyOffline = function(time) {
+    instance.notifyOffline = function (time) {
         this.activeNotifications.success = new PNotify({
             title: "Offline Gains",
             text: "You've been offline for " + Game.utils.getFullTimeDisplay(time, true),
@@ -384,14 +392,14 @@ var Game = (function() {
         });
     };
 
-    instance.removeExcess = function(array, id){
+    instance.removeExcess = function (array, id) {
         var check = false;
-        for(var i = array.length; i > 0 ; i--){
-            if(array[i] === id){
-                if(check === false){
+        for (var i = array.length; i > 0; i--) {
+            if (array[i] === id) {
+                if (check === false) {
                     check = true;
                 }
-                else{
+                else {
                     check = true;
                     array.splice(i, 1);
                 }
@@ -399,7 +407,7 @@ var Game = (function() {
         }
     }
 
-    instance.updateAutoSave = function(delta) {
+    instance.updateAutoSave = function (delta) {
         this.timeSinceAutoSave += delta;
 
         var element = $('#autoSaveTimer');
@@ -408,69 +416,139 @@ var Game = (function() {
 
         if (timeLeft <= 15000) {
             element.show();
-            if(timeLeft <= 5000){
+            if (timeLeft <= 5000) {
                 element.text("Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds");
-                document.title = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds";
+                document.getElementsByClassName('menu-title')[0].innerHTML = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds";
+                // document.title = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(1) + " seconds";
             }
-            else{
+            else {
                 element.text("Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds");
-                document.title = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds";
+                document.getElementsByClassName("menu-title")[0].innerHTML = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds";
+                // document.title = companyName + " Company - Autosaving in " + (timeLeft / 1000).toFixed(0) + " seconds";
             }
         } else {
             element.hide();
-            document.title = companyName + " Company";
+            document.getElementsByClassName('menu-title')[0].innerHTML = companyName + " Company";
+            // document.title = companyName + " Company";
         }
 
-        if(timeLeft < 100) {
-            document.title = companyName + " Company";
+        if (timeLeft < 100) {
+            document.getElementsByClassName('menu-title')[0].innerHTML = companyName + " Company";
+            // document.title = companyName + " Company";
             this.save();
             this.timeSinceAutoSave = 1;
         }
     };
 
-    instance.start = function() {
+    instance.start = function () {
         PNotify.prototype.options.styling = "bootstrap3";
         PNotify.prototype.options.delay = 3500;
 
         $('[data-toggle="tooltip"]').tooltip();
 
         console.debug("Loading Game");
-        
+
         this.createInterval("Loading Animation", this.loadAnimation, 10);
         this.createInterval("Loading", this.loadDelay, 1000);
 
         this.update_frame(0);
     };
 
-    instance.loadFromData = function() {
+    instance.loadFromData = function () {
         vex.dialog.prompt({
             message: "Paste your save data",
             placeholder: 'Data Goes Here',
             callback: function (value) {
                 var text = value;
-                if (!text.trim()) return console.warn("No save to import provided.");
-                if(text.length % 4 !== 0) {
-                    console.log("String is not valid base64 encoded: " + text.length + ' (' + text.length % 4 + ')');
+                if (text) {
+                    if (!text.trim()) return console.warn("No save to import provided.");
+                    if (text.length % 4 !== 0) {
+                        console.log("String is not valid base64 encoded: " + text.length + ' (' + text.length % 4 + ')');
+                        return;
+                    }
+
+                    var decompressed = LZString.decompressFromBase64(text);
+                    if (!decompressed) {
+                        console.log("Import Game failed, could not decompress!");
+                        return;
+                    }
+                    localStorage.setItem("save", decompressed);
+
+                    console.log("Imported Saved Game");
+
+                    window.location.reload();
+                } else {
                     return;
                 }
-
-                var decompressed = LZString.decompressFromBase64(text);
-                if(!decompressed) {
-                    console.log("Import Game failed, could not decompress!");
-                    return;
-                }
-                localStorage.setItem("save", decompressed);
-
-                console.log("Imported Saved Game");
-
-                window.location.reload();
             }
         })
     };
 
+    instance.mainMenu = function (event, data) {
+        switch (event) {
+            case ('play'): {
+                document.getElementById("game").className = "container bar-seperate";
+                return document.getElementById('mainPage').className = 'hidden';
+            }
+            case ('settings'): {
+                return document.getElementById('settingsPage').className = 'show page-content';
+            }
+            case ('stats'): {
+                return document.getElementById('statsPage').className = 'show page-content';
+            }
+            case ('help'): {
+                return document.getElementById('helpPage').className = 'show page-content';
+            }
+            case ('credits'): {
+                return document.getElementById('creditsPage').className = 'show page-content';
+            }
+            case ('back'): {
+                document.getElementById('settingsPage').className = 'hidden';
+                document.getElementById('helpPage').className = 'hidden';
+                document.getElementById('creditsPage').className = 'hidden';
+                return;
+            }
+            case ('main'): {
+                return document.getElementById('mainPage').className = 'page-content';
+            }
+            case ('fullscreen'): {
+                if (fullscreen ? fullscreen = false : fullscreen = true);
+                console.log(fullscreen)
+                return app.BrowserWindow.getFocusedWindow().setFullScreen(fullscreen);
+            }
+            case ('reload'): {
+                this.save()
+                return location.reload();
+            }
+            case ('devTools'): {
+                return app.BrowserWindow.getFocusedWindow().webContents.openDevTools();
+            }
+            case ('quit'): {
+                if (data !== 'save') {
+                    return app.BrowserWindow.getFocusedWindow().close();
+                } else {
+                    this.save();
+                    return app.BrowserWindow.getFocusedWindow().close();
+                }
+            }
+        }
+    }
+
     return instance;
 }());
 
-window.onload = function(){
+window.onload = function () {
     Game.start();
+};
+
+
+/* Keyboard shortcuts */
+document.onkeyup = function (e) {
+    if (e.ctrlKey && e.which == 83) {
+        Game.save();
+    } else if (e.which == 27) {
+        Game.mainMenu('main');
+    } else if (e.ctrlKey && e.which == 67) {
+        PNotify.removeAll();
+    }
 };

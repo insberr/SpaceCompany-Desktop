@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <haed>
+        <title>SpaceCompany Desktop</title>
+        <link rel="stylesheet" href="../menuBar/menuBar.css" type="text/css" />
+        <link rel="stylesheet" href="../styles/style.css" type="text/css" />
+    </haed>
+    <body>
+        <div class="menu-bar"></div>
+        <img class="menu-icon" src="../../whiteLogo.png">
+        <span class="menu-title">Credits - SpaceCompany |</span>
+        <div class="menu-tabs">
+            <button class="menu-tab window-tab">Window</button>
+            <button class="menu-tab game-tab">Game</button>
+            <button class="menu-tab more-tab">More</button>
+        </div>
+        <button class="menu-close"><img width="12px" src="../../Icons/close.png"></button>
+        <table class="tab-dropdown tab-win">
+            <tr>
+                <td><button class="tab-item fullscreen">Toggle Fullscreen</button>
+            <tr>
+            <td><button class="tab-item reload hidden">Reload CTRL+R</button>
+            <tr>
+            <td><tab-line>
+            <tr>
+            <td><button class="tab-item devTools hidden">Open Dev Tools CTRL+Shift+I</button>
+            <tr>
+            <td><tab-line>
+            <tr>
+                <td><button class="tab-item quit">Quit CTRL+Q</button>
+        </table>
+        <table class="tab-dropdown tab-game">
+            <tr>
+                <td><button class="tab-item mainMenu blocked">Main Menu</button>
+            <tr>
+            <td><button class="tab-item save">Save</button>
+            <tr>
+            <td><button class="tab-item deleteSaveData">Delete Save Data</button>
+            <tr>
+                <td><button class="tab-item loadFromData">Load Save Data</button>
+            <tr>
+            <td><tab-line></tab-line>
+            <tr>
+            <td><button onclick="openPage('main', 'settings')" class="tab-item settings">Settings</button>
+        </table>
+        <table class="tab-dropdown tab-more">
+            <tr>
+                <td><button onclick="openPage('main', 'help')" class="tab-item helpPage">Help & FAQ</button>
+            <tr>
+            <td><button onclick="openPage('main', 'credits')" class="tab-item creditsPage">Credits</button>
+        </table>
+        <div class="page-content">
+            <h1 class="main-icon"><img width="30%" src="../../loadScreenPic.png"></h1>
+            <h1 class="main-title">SpaceCompany</h1>
+            <br>
+            <button onclick="openPage('main', 'game')">Play</button>
+            <button onclick="openPage('main', 'settings')">Settings</button>
+            <button onclick="openPage('main', 'help')">Help & FAQ</button>
+            <button onclick="openPage('main', 'credits')">Credits</button>
+        </div>
+    </body>
+    <script>window.$ = window.jQuery = require('jquery');</script>
+    <script src="../menuBar/menuBar.js"></script>
+    <script src="../styles/style.js"></script>
+</html>

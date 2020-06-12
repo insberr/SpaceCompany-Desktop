@@ -1,0 +1,150 @@
+.menu-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 30px;
+    background-color: rgb(156, 156, 156);
+    z-index: 10;
+    user-select: none;
+    -webkit-app-region: drag;
+}
+
+.menu-icon {
+    position: fixed;
+    width: 25px;
+    top: 2px;
+    left: 10px;
+    z-index: 11;
+    user-select: none;
+}
+
+.menu-title {
+    position: fixed;
+    top: 4px;
+    z-index: 11;
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    user-select: none;
+    color: white;
+}
+
+.menu-tabs {
+    height: fit-content;
+    font-size: 15px;
+    position: fixed;
+    top: 0;
+    left: 55px;
+    z-index: 11;
+    user-select: none;
+    -webkit-app-region: none;
+}
+
+.menu-tab {
+    color: white;
+    margin: 0;
+    border: none;
+    top: 0;
+    background-color: transparent;
+    padding: 4px 8px 5px 8px;
+    border-radius: 0;
+    z-index: 12;
+    user-select: none;
+}
+
+.menu-tab:hover {
+    cursor: pointer;
+    background-color: rgb(214, 213, 213);
+}
+
+.menu-close {
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-radius: 0;
+    border: none;
+    background-color: transparent;
+    padding: 5px 8px 5px 8px;
+    z-index: 12;
+    user-select: none;
+    -webkit-app-region: none;
+}
+
+.menu-close:hover {
+    background-color: red;
+}
+
+.tab-dropdown {
+    display: none;
+    position: fixed;
+    top: 30px;
+    background-color: white;
+    height: fit-content;
+    z-index: 12;
+    user-select: none;
+    width: 250px;
+    /*
+    min-width: 20px;
+    max-width: 100px;
+    */
+    table-layout: fixed;
+    border-collapse: collapse;
+    /*
+    background-color: red;
+    */
+}
+
+.tab-win {
+    user-select: none;
+    left: 55px;
+}
+.tab-game {
+    user-select: none;
+    left: 123px;
+}
+.tab-more {
+    user-select: none;
+    left: 180px;
+}
+
+.tab-item {
+    font-size: 15px;
+    margin: 0;
+    background-color: transparent;
+    border: 0;
+    text-align: left;
+    border-radius: 0;
+    /*padding: 6px 20px 4px 30px;*/
+    user-select: none;
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: black;
+}
+
+.tab-item:hover {
+    background-color: rgba(194, 194, 194, 0.644);
+}
+
+tab-line {
+    user-select: none;
+    display: block;
+    margin-top: .5px;
+    margin-bottom: .5px;
+    /* style */
+    border: .5px solid gray;
+    border-radius: 2px;
+    /*
+    border: .5px solid gray;
+    */
+}
+
+.blocked {
+    background-color: rgb(214, 213, 213);
+    pointer-events: none;
+}
+
+
+
+

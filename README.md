@@ -6,19 +6,47 @@ Space Company is a science-fiction incremental game where you start from humble 
 
 # My Idea
 The idea of this project is to turn <a href="https://github.com/sparticle999/spacecompany">Space Company</a> into a desktop application while also keeping the same feel as the original game in some way. I will be redesigning the layout to make it have a desktop style/feel
-<br>You should check out this project that is being worked on at the same time as this ---> <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a> made by <a href="https://github.com/migue1s" target="_blank">migue1s</a>
+<br>You should check out the <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a> made by <a href="https://github.com/migue1s" target="_blank">migue1s</a>
 
 
-## V0.0.5 Updates
+### How To Install The Game
+Open up the code directory in the terminal and type
+```
+npm install
+```
+Once that is done, type
+```
+npm start
+```
+
+# Updates
+## v0.0.6
+* Restyled the menu bar
+* Added a main menu page
+* Added keyboard shortcuts 
+`esc` for the main menu,
+`CTRL S` to save the game,
+`CTRL C` to clear all notifications
+* Moved the help, credits, settings, and main menu pages all to the games `index.html`
+* Fixed the loading screen
+* Started work on redesigning the UI
+* Moved the `energy defect` to the bottom left of the screen (This is temporary)
+
+
+## To Do
+* [x] Remove the `Bar at top of screen` as Sparticle999 calls it
+* [x] Fix the loading screen flash. 
+* [ ] Redesign the ui (still using bootstrap) to make it feel more like a desktop program.
+* [ ] Waiting for version 1 of <a href="https://github.com/sparticle999/spacecompany">Space Company</a> to be released before I do too much work on this project
+* [x] Make the menu bar on the 'webpage' rather than the 'program window' so youn can access it in fullscreen
+* [ ] Redesign the credits and help pages
+
+
+## V0.0.5
 * Added the help and credits pages to the menu bar (under help)
 * Added a load game from save data button in the menu under 'Game'
 * Added 'Home' button to go back to the game from a differant page (till i make new pages into a new window rather than the same window)
 * Started work on making a custom menu bar (as seen in the credits.html page)
-
-### Plans / Things I Need To Do
-* Make the menu bar on the 'webpage' rather than the 'program window' so youn can access it in fullscreen
-* Reword the credits page
-* Redesign the credits and help page
 
 
 ## Updates
@@ -37,39 +65,11 @@ confirm()
 * Sort of fixed the loading screen by extending its delay by 50ms
 
 
-## Things I Might Have To Do / To Do
-* Change the way the game is saved
-* Make useful menu bar 
-* Move the autosave countdown to the bottom of the page
-* Remove the `Bar at top of screen` as Sparticle999 calls it
-
-
-## Plans
-* Fix the loading screen flash. 
-* Redesign the ui (still using bootstrap) to make it feel more like a desktop program.
-* Waiting for version 1 of <a href="https://github.com/sparticle999/spacecompany">Space Company</a> to be released before I do too much work on this project
-
-### How To Install The Game
-Open up the code directory in the terminal and type
-```
-npm install
-```
-Once that is done, type
-```
-npm start
-```
-
-
-I have not made any build of the game (like a .exe) yet. Still learning.
-
-I will make the build soon, dont worry.
-
-## Links 
+# Links & Credits
 * <a href="https://github.com/spidergamin" target="_blank">SpiderGamin</a> - Me? Yeah I think so.
-* <a href="https://github.com/sparticle999" target="_blank">Sparticle999</a> - Game creator
-* <a href="https://github.com/migue1s" target="_blank">migue1s</a> - Mobile app maker
-* Electron js - Electron I think
-
+* <a href="https://github.com/sparticle999" target="_blank">Sparticle999</a> - <a href="https://github.com/sparticle999/spacecompany">Space Company</a>
+* <a href="https://github.com/migue1s" target="_blank">migue1s</a> - <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a>
+* Electron js
 
 
 
@@ -98,8 +98,6 @@ document.title = companyName + " Company - Autosaving in " +
 <details><summary>vex-js js prompt replacement</summary>
 <p>
 
-This goes in the head tag
-
 ```html
 <link rel="stylesheet" href="game/vex.css" />
 <link rel="stylesheet" href="game/vex-theme-os.css" />
@@ -108,6 +106,7 @@ This goes in the head tag
 This goes in any js file that uses the `prompt()` function
 
 ```js
+// This goes in any js file that uses the `prompt()` function
 const vex = require('vex-js');
 vex.registerPlugin(require('vex-dialog'))
 vex.defaultOptions.className = 'vex-theme-os'

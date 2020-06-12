@@ -5,7 +5,8 @@
   "description": "An attempt at making SpaceCompany into a desktop app using Electron.js",
   "main": "src/index.js",
   "scripts": {
-    "start": "electron ."
+    "start": "electron .",
+    "build": "electron-packager ."
   },
   "keywords": [],
   "author": {
@@ -21,6 +22,7 @@
     "vex-js": "^4.1.0"
   },
   "devDependencies": {
-    "electron": "9.0.3"
+    "electron": "9.0.3",
+    "electron-packager": "^14.2.1"
   }
 }

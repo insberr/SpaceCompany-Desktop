@@ -19,6 +19,14 @@ Once that is done, type
 npm start
 ```
 
+### How To Build
+To build the application for your platform, run
+<br>NOTE: MAKE SURE YOU HAVE RUN `npm install`
+```
+npm run build
+``
+
+
 # Updates
 ## v0.0.6
 * Restyled the menu bar

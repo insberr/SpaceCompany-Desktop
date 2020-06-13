@@ -24,7 +24,7 @@ To build the application for your platform, run
 <br>NOTE: MAKE SURE YOU HAVE RUN `npm install`
 ```
 npm run build
-``
+```
 
 
 # Updates

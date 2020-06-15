@@ -15,14 +15,14 @@
   },
   "license": "MIT",
   "dependencies": {
-    "electron": "9.0.3",
+    "electron": "9.0.4",
     "growl": "^1.10.5",
     "jquery": "^3.5.1",
     "path": "^0.12.7",
     "vex-js": "^4.1.0"
   },
   "devDependencies": {
-    "electron": "9.0.3",
+    "electron": "9.0.4",
     "electron-packager": "^14.2.1"
   }
 }

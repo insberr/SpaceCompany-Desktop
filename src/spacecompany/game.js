@@ -230,6 +230,7 @@ var Game = (function () {
         }
 
         $('#versionLabel').text(versionNumber);
+        $('#desktopversion').text(desktopVersion);
 
         self.interstellar.redundantChecking();
     }

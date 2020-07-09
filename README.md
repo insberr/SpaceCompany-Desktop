@@ -9,6 +9,7 @@ The idea of this project is to turn <a href="https://github.com/sparticle999/spa
 <br>You should check out the <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a> made by <a href="https://github.com/migue1s" target="_blank">migue1s</a>
 
 
+## These are not recommended
 ### How To Install The Game
 Open up the code directory in the terminal and type
 ```

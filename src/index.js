@@ -10,7 +10,7 @@ const createWindow = () => {
         frame: false,
         width: 1250,
         height: 700,
-        icon: path.join(__dirname, '/build/icon.ico'),
+        icon: path.join(__dirname, '/spacecompany/whiteLogo.png'),
         show: false,
         webPreferences: {
             nodeIntegration: true

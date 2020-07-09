@@ -1,7 +1,7 @@
 {
   "name": "spacecompany-desktop",
   "productName": "spacecompany-desktop",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An attempt at making SpaceCompany into a desktop app using Electron.js",
   "main": "src/index.js",
   "scripts": {
@@ -16,6 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "electron": "9.0.3",
+    "electron-builder": "^22.7.0",
     "growl": "^1.10.5",
     "jquery": "^3.5.1",
     "path": "^0.12.7",

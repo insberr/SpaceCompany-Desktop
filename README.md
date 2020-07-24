@@ -1,3 +1,6 @@
+![Build/release](https://github.com/SpiderGamin/SpaceCompany-Desktop/workflows/Build/release/badge.svg)
+
+
 # SpaceCompany Desktop
 Im making a desktop version of a game called <a href="https://github.com/sparticle999/spacecompany">Space Company</a> made by <a href="https://github.com/sparticle999">Sparticle999</a>
 

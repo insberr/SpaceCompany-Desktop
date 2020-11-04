@@ -78,7 +78,7 @@ confirm()
 
 
 # Links & Credits
-* <a href="https://github.com/spidergamin" target="_blank">SpiderGamin</a> - Me? Yeah I think so.
+* <a href="https://github.com/Insberr" target="_blank">Insberr</a> - Me? Yeah I think so.
 * <a href="https://github.com/sparticle999" target="_blank">Sparticle999</a> - <a href="https://github.com/sparticle999/spacecompany">Space Company</a>
 * <a href="https://github.com/migue1s" target="_blank">migue1s</a> - <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a>
 * Electron js

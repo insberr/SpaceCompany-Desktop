@@ -1,14 +1,14 @@
-![Build/release](https://github.com/SpiderGamin/SpaceCompany-Desktop/workflows/Build/release/badge.svg)
+![Build/release](https://github.com/Insberr/SpaceCompany-Desktop/workflows/Build/release/badge.svg)
 
 
 # SpaceCompany Desktop
-Im making a desktop version of a game called <a href="https://github.com/sparticle999/spacecompany">Space Company</a> made by <a href="https://github.com/sparticle999">Sparticle999</a>
+Im making a desktop version of a game called <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a> made by <a href="https://github.com/sparticle999">Sparticle999</a>
 
 ## Overview:
-Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonising the entire galaxy(ies?)
+Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonizing the entire galaxy(ies?)
 
 # My Idea
-The idea of this project is to turn <a href="https://github.com/sparticle999/spacecompany">Space Company</a> into a desktop application while also keeping the same feel as the original game in some way. I will be redesigning the layout to make it have a desktop style/feel
+The idea of this project is to turn <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a> into a desktop application while also keeping the same feel as the original game in some way. I will be redesigning the layout to make it have a desktop style/feel
 <br>You should check out the <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a> made by <a href="https://github.com/migue1s" target="_blank">migue1s</a>
 
 
@@ -79,9 +79,8 @@ confirm()
 
 # Links & Credits
 * <a href="https://github.com/Insberr" target="_blank">Insberr</a> - Me? Yeah I think so.
-* <a href="https://github.com/sparticle999" target="_blank">Sparticle999</a> - <a href="https://github.com/sparticle999/spacecompany">Space Company</a>
+* <a href="https://github.com/sparticle999" target="_blank">Sparticle999</a> - <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a>
 * <a href="https://github.com/migue1s" target="_blank">migue1s</a> - <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a>
-* Electron js
 
 
 

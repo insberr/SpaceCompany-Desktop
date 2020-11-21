@@ -43,6 +43,3 @@ app.on('activate', () => {
         createWindow();
     }
 });
-
-
-// Other code vvvvv

@@ -1,14 +1,17 @@
-![Build/release](https://github.com/Insberr/SpaceCompany-Desktop/workflows/Build/release/badge.svg)
+> Currently not maintained
+
+
+![Build/release](https://github.com/insberr/SpaceCompany-Desktop/workflows/Build/release/badge.svg)
 
 
 # SpaceCompany Desktop
-Im making a desktop version of a game called <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a> made by <a href="https://github.com/sparticle999">Sparticle999</a>
+A desktop version of the game "<a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a>", made by <a href="https://github.com/sparticle999">Sparticle999</a>
 
 ## Overview:
 Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonizing the entire galaxy(ies?)
 
 # My Idea
-The idea of this project is to turn <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a> into a desktop application while also keeping the same feel as the original game in some way. I will be redesigning the layout to make it have a desktop style/feel
+The idea of this project is to turn <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a> into a desktop application.
 <br>You should check out the <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a> made by <a href="https://github.com/migue1s" target="_blank">migue1s</a>
 
 

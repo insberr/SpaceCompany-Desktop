@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": {
-    "name": "Insberr",
+    "name": "insberr",
     "email": "jaytaygame@gmail.com"
   },
   "license": "MIT",
@@ -23,6 +23,6 @@
   "devDependencies": {
     "electron": "11.1.0",
     "electron-builder": "^22.9.1",
-    "electron-packager": "^15.1.0"
+    "electron-packager": "^15.2.0"
   }
 }

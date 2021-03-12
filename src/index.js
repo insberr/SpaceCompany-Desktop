@@ -8,8 +8,8 @@ const createWindow = () => {
     // Create the browser window object
     const win = new BrowserWindow({
         frame: false,
-        width: 1250,
-        height: 700,
+        width: 1280,
+        height: 720,
         icon: path.join(__dirname, '/spacecompany/whiteLogo.png'),
         show: false,
         webPreferences: {
@@ -18,9 +18,9 @@ const createWindow = () => {
     });
 
     // Show the window once its loaded
-    win.once('ready-to-show', () => {
-        win.show()
-    })
+	win.once('ready-to-show', () => {
+		win.show();
+	});
 
     // Load the index.html (game)
     win.loadFile(path.join(__dirname, '/spacecompany/index.html'));

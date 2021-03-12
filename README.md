@@ -1,19 +1,17 @@
-> Currently not maintained
-
+> Currently broken
 
 ![Build/release](https://github.com/insberr/SpaceCompany-Desktop/workflows/Build/release/badge.svg)
 
 
 # SpaceCompany Desktop
-A desktop version of the game "<a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a>", made by <a href="https://github.com/sparticle999">Sparticle999</a>
+A desktop version of the game [SpaceCompany](https://github.com/sparticle999/spacecompany), made by [Sparticle999](https://github.com/sparticle999)
 
 ## Overview:
 Space Company is a science-fiction incremental game where you start from humble beginnings on Earth, working your way up to travelling between star systems and building Dyson Spheres and pretty much colonizing the entire galaxy(ies?)
 
 # My Idea
-The idea of this project is to turn <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a> into a desktop application.
-<br>You should check out the <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a> made by <a href="https://github.com/migue1s" target="_blank">migue1s</a>
-
+The idea of this project is to turn [SpaceCompany](https://github.com/sparticle999/spacecompany) into a desktop application.  
+You should check out the [SpaceCompany Mobile App](https://github.com/migue1s/SpaceCompanyNative) made by [migue1s](https://github.com/migue1s)
 
 ## This are not recommended
 ### How To Install The Game
@@ -27,8 +25,8 @@ npm start
 ```
 
 ### How To Build
-To build the application for your platform, run
-<br>NOTE: MAKE SURE YOU HAVE RUN `npm install`
+To build the application for your platform, run  
+NOTE: MAKE SURE YOU HAVE RUN `npm install`
 ```
 npm run build
 ```
@@ -52,8 +50,7 @@ npm run build
 * [x] Remove the `Bar at top of screen` as Sparticle999 calls it
 * [x] Fix the loading screen flash. 
 * [ ] Redesign the ui (still using bootstrap) to make it feel more like a desktop program.
-* [ ] Waiting for version 1 of <a href="https://github.com/sparticle999/spacecompany">Space Company</a> to be released before I do too much work on this project
-* [x] Make the menu bar on the 'webpage' rather than the 'program window' so youn can access it in fullscreen
+* [x] Make the menu bar on the 'webpage' rather than the 'program window' so you can access it in fullscreen
 * [ ] Redesign the credits and help pages
 
 
@@ -81,10 +78,9 @@ confirm()
 
 
 # Links & Credits
-* <a href="https://github.com/Insberr" target="_blank">Insberr</a> - Me? Yeah I think so.
-* <a href="https://github.com/sparticle999" target="_blank">Sparticle999</a> - <a href="https://github.com/sparticle999/spacecompany">SpaceCompany</a>
-* <a href="https://github.com/migue1s" target="_blank">migue1s</a> - <a href="https://github.com/migue1s/SpaceCompanyNative" target="_blank">SpaceCompany Mobile App</a>
-
+* [insberr](https://github.com/Insberr) - Me? Yeah I think so.
+* [Sparticle999](https://github.com/sparticle999) - Creator of [SpaceCompany](https://github.com/sparticle999/spacecompany)
+* [migue1s](https://github.com/migue1s) - Creator of the [SpaceCompany Mobile App](https://github.com/migue1s/SpaceCompanyNative)
 
 
 ## Mainly notes for me:

@@ -2,7 +2,7 @@
   "name": "spacecompany-desktop",
   "productName": "spacecompany-desktop",
   "version": "0.1.1",
-  "description": "An attempt at making SpaceCompany into a desktop app using Electron.js",
+  "description": "An attempt at making SpaceCompany into a desktop app",
   "main": "src/index.js",
   "scripts": {
     "start": "electron .",

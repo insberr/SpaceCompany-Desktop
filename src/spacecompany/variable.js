@@ -1,5 +1,5 @@
 // Variables in save function
-const desktopVersion = "v0.1.0",
+var desktopVersion = "v0.1.0",
 	versionNumber = "V0.5.1.2 Beta",
 	companyName = "Space";
 

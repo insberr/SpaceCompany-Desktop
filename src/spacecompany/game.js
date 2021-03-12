@@ -1,7 +1,5 @@
-var app = require("electron").remote;
-const electron = require("electron");
+const { BrowserWindow } = require("electron");
 const path = require("path");
-const BrowserWindow = electron.remote.BrowserWindow;
 const vex = require("vex-js");
 vex.registerPlugin(require("vex-dialog"));
 vex.defaultOptions.className = "vex-theme-os";
@@ -597,10 +595,12 @@ var Game = (function () {
 			}
 			case "quit": {
 				if (data !== "save") {
-					return app.BrowserWindow.getFocusedWindow().close();
+					return;
+					// return BrowserWindow.getFocusedWindow().close();
+					// return app.BrowserWindow.getFocusedWindow().close();
 				} else {
 					this.save();
-					return app.BrowserWindow.getFocusedWindow().close();
+					return;// BrowserWindow.getFocusedWindow().close();
 				}
 			}
 		}

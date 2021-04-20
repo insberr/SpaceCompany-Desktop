@@ -16,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "growl": "^1.10.5",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "path": "^0.12.7",
     "vex-js": "^4.1.0"
   },

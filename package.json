@@ -21,7 +21,7 @@
     "vex-js": "^4.1.0"
   },
   "devDependencies": {
-    "electron": "16.0.2",
+    "electron": "16.0.6",
     "electron-builder": "^22.14.5",
     "electron-packager": "^15.4.0"
   }

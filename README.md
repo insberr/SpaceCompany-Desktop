@@ -1,4 +1,5 @@
 > Currently broken
+# CURRENTLY NOT MAINTAINED
 
 ![Build/release](https://github.com/insberr/SpaceCompany-Desktop/workflows/Build/release/badge.svg)
 
@@ -78,7 +79,7 @@ confirm()
 
 
 # Links & Credits
-* [insberr](https://github.com/Insberr) - Me? Yeah I think so.
+* [insberr](https://github.com/insberr) - Me? Yeah I think so.
 * [Sparticle999](https://github.com/sparticle999) - Creator of [SpaceCompany](https://github.com/sparticle999/spacecompany)
 * [migue1s](https://github.com/migue1s) - Creator of the [SpaceCompany Mobile App](https://github.com/migue1s/SpaceCompanyNative)
 
